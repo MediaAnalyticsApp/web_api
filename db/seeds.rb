@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-t = 12
+t = 2
 t.times do
   person = Person.create({name: FFaker::Name.name})
   site = Site.create({name: FFaker::Internet.domain_name})
