@@ -1,8 +1,9 @@
 module Api
   module V1
     class PersonsController < ApplicationController
-      # before_action :authenticate_user!, except: :index
-      
+      include ActionController::HttpAuthentication::Token::ControllerMethods
+      before_action :authenticate, only: :index
+
       # GET /persons.json
       def index
         @persons = Person.order('id DESC')
@@ -56,6 +57,11 @@ module Api
         params.require(:person).permit(:name)
       end
 
+      def authenticate
+        authenticate_or_request_with_http_token do |token, options|
+          @user = User.find_by(token: token)
+        end
+      end
     end
   end
 end

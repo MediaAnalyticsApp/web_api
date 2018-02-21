@@ -1,8 +1,8 @@
-
 module Api
   module V1
     class PagesController < ApplicationController
-      # before_action :authenticate_user!, except: :index
+      include ActionController::HttpAuthentication::Token::ControllerMethods
+      before_action :authenticate, only: :index
       
       # GET /pages.json  | GET http://localhost:3000/api/v1/pages.json?start_date=2018-02-08&end_date=2018-02-11
       def index
@@ -60,18 +60,13 @@ module Api
       end
 
       private
-      # GET /pages/1.json
-      # def show_in_range
-      #   params[:start_date]..params[:end_date])
-      # end      
-      # # def show_in_range
-      #   @page = Page.where(found_date_time: params[:start_date]..params[:end_date])
-      # end
-      # def user_age_range
-      #   params[:start_age]..params[:end_age]
-      # end
       def post_params
         params.require(:page).permit(:url, :found_date_time, :last_scan_date)
+      end
+      def authenticate
+        authenticate_or_request_with_http_token do |token, options|
+          @user = User.find_by(token: token)
+        end
       end
     end
   end
