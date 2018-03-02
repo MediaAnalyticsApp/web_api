@@ -1,8 +1,9 @@
 module Api
   module V1
     class KeywordsController < ApplicationController
-      # before_action :authenticate_user!, except: :index
-
+      include ActionController::HttpAuthentication::Token::ControllerMethods
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      
       # GET /keywords.json
       def index
         @keywords = Keyword.order('id DESC')
@@ -54,6 +55,12 @@ module Api
       private
       def post_params
         params.require(:keyword).permit(:name, :person_id)
+      end
+
+      def authenticate
+        authenticate_or_request_with_http_token do |token, options|
+          @user = User.find_by(token: token)
+        end
       end
     end
   end
