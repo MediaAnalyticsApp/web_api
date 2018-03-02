@@ -2,7 +2,7 @@ module Api
   module V1
     class PagesController < ApplicationController
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      before_action :authenticate, only: :index
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
       
       # GET /pages.json  | GET http://localhost:3000/api/v1/pages.json?start_date=2018-02-08&end_date=2018-02-11
       def index

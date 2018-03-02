@@ -2,8 +2,8 @@ module Api
   module V1
     class PersonsController < ApplicationController
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      before_action :authenticate, only: :index
-
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      
       # GET /persons.json
       def index
         @persons = Person.order('id DESC')

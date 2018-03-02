@@ -2,8 +2,8 @@ module Api
   module V1
     class SitesController < ApplicationController
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      before_action :authenticate, only: :index
-
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      
       # GET /sites.json
       def index
         @sites = Site.order('id DESC')

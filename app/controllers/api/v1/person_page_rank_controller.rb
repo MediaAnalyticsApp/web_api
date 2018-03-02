@@ -2,8 +2,8 @@ module Api
   module V1
     class PersonPageRankController < ApplicationController
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      before_action :authenticate, only: :index
-
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      
       # GET /person_page_rank.json
       def index
         @person_page_rank = PersonPageRank.order('id DESC')

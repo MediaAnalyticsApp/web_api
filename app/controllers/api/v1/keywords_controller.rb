@@ -2,8 +2,8 @@ module Api
   module V1
     class KeywordsController < ApplicationController
       include ActionController::HttpAuthentication::Token::ControllerMethods
-      before_action :authenticate, only: :index
-
+      before_action :authenticate, only: [:index, :show, :new, :edit, :create, :update, :destroy]
+      
       # GET /keywords.json
       def index
         @keywords = Keyword.order('id DESC')
