@@ -12,7 +12,7 @@
   adapter: mysql2  
   host: 54.64.85.75
 
-* Install
+* Install  
   git clone https://github.com/MediaAnalyticsApp/web_api.git  
   cd web_api  
   bundle
