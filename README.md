@@ -5,25 +5,25 @@
 * Ruby version  
   2.3.1
 
-* Rails version 
+* Rails version  
   5.1.4
 
-* Database
-  adapter: mysql2
+* Database  
+  adapter: mysql2  
   host: 54.64.85.75
 
 * Install
-  git clone https://github.com/MediaAnalyticsApp/web_api.git
-  cd web_api
+  git clone https://github.com/MediaAnalyticsApp/web_api.git  
+  cd web_api  
   bundle
 
-* Add fake data for tests
+* Add fake data for tests  
   rails db:seed
 
-* How to run the test suite
+* How to run the test suite  
   rails -s
   
-* How to run rails in production mode
+* How to run rails in production mode  
   rails s -e production
 
 =======
