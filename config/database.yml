@@ -11,8 +11,8 @@ default: &default
   database: mediaanalitycs
   username: analitycs
   password: analit123!
-  host: localhost
-  # host: 54.64.85.75
+  # host: localhost
+  host: 54.64.85.75
   port: 9906
 
   timeout: 5000
