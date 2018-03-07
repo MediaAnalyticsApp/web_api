@@ -1,6 +1,6 @@
 # README
 
-* Web API worked on address https://divine-metric.herokuapp.com/api/v1/
+* Web service is available at https://divine-metric.herokuapp.com/api/v1/
   
 * Ruby version  
   2.3.1
